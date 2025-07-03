@@ -8,6 +8,7 @@ import java.util.Map;
 
 @Data
 public class Item {
+    private long id;
     private Long nameid;
     private String name;
     private String description;

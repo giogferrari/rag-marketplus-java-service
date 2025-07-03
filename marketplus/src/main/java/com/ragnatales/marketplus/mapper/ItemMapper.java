@@ -25,7 +25,7 @@ public class ItemMapper {
         if (dto.getOpts() != null) {
             Set<OptsEntity> opts = dto.getOpts().stream()
                     .map(optName -> optRepository.findByName(optName)
-                            .orElseGet(() -> new OptsEntity(null, optName, null)))
+                            .orElseGet(() -> new OptsEntity(null, optName)))
                     .collect(Collectors.toSet());
             item.setOpts(opts);
         }

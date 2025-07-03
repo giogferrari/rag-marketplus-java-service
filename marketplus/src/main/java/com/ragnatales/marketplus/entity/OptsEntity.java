@@ -3,6 +3,7 @@ package com.ragnatales.marketplus.entity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Table(name = "opts")
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class OptsEntity {
 
     @Id
@@ -20,6 +22,6 @@ public class OptsEntity {
     @Column(nullable = false)
     private String name;
 
-    @ManyToMany(mappedBy = "opts")
-    private Set<ItemEntity> items = new HashSet<>();
+//    @ManyToMany(mappedBy = "opts")
+//    private Set<ItemEntity> items = new HashSet<>();
 }
