@@ -1,5 +1,6 @@
 package com.ragnatales.marketplus.controller;
 
+import com.ragnatales.marketplus.entity.ItemEntity;
 import com.ragnatales.marketplus.model.Item;
 import com.ragnatales.marketplus.service.MarketService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,9 @@ public class MarketController {
 
     @GetMapping
     public Flux<Item> getItems(@RequestParam String item_name) {
-        return marketService.getItems(item_name);
+        return marketService.getItems(item_name).doOnNext(item -> {
+            ItemEntity entity = marketService.convertToEntity(item);
+            marketService.saveIfNotExists(entity);
+        });
     }
 }
